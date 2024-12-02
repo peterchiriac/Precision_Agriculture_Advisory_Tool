@@ -9,19 +9,19 @@
 Table Of Contents
 
 1. [Introduction](#1-introduction)
-2.	Overview
-3.	Challenges Addressed
-4.  End-to-end Workflow
-5.	Features
-6.	Running the Application
-7.	Installation
-8.	Instructions
-9.	Deployment
-10.	Technologies Used
-11.	Limitations and Future Work
-12.	Contributing
-13. License
-14.	Contact
+2. [Overview](#2-overview)
+3. [Challenges Addressed](#3-challenges-addressed)
+4. [End-to-End Workflow](#end-to-end-workflow)
+5. [Features](#features)
+6. [Installation](#installation)
+7. [Running the Application](#running-the-application)
+8. [Instructions](#instructions)
+9. [Deployment](#deployment)
+10. [Technologies Used](#technologies-used)
+11. [Limitations and Future Work](#limitations-and-future-work)
+12. [Contributing](#contributing)
+13. [License](#license)
+14. [Contact](#contact)
 
 ---
 
@@ -30,22 +30,23 @@ Table Of Contents
 The Precision Agriculture Advisory Tool is a web-based application designed to assist in making data-driven decisions about crop nutrition and soil health. This tool aims to bridge the gap between modern technology and traditional farming practices, empowering farmers with actionable insights to optimise productivity while reducing environmental impact.
    
 ---
-2. Overview
+## 2. Overview
 
-    Farmers face significant challenges in optimising fertiliser application due to the absence of integrated tools that provide real-time, actionable data. This gap often results in inefficient nutrient use, leading to:
-•	Diminished yields 
-•	Increased costs
-•	Environmental strain
-• Poor nutritional quality in harvested crops
+Farmers face significant challenges in optimising fertiliser application due to the absence of integrated tools that provide real-time, actionable data. This gap often results in inefficient nutrient use, leading to:
 
-    Crops subjected to excessive or insufficient fertiliser applications frequently fail to develop an optimal nutrient profile, compromising both their quality and nutritional value. The central question this project seeks to address is:
+•	Diminished yields  
+•	Increased costs  
+•	Environmental strain  
+• Poor nutritional quality in harvested crops  
+
+Crops subjected to excessive or insufficient fertiliser applications frequently fail to develop an optimal nutrient profile, compromising both their quality and nutritional value. The central question this project seeks to address is:
 *How can farmers leverage data to optimise nutrient application effectively?*
 
    ---
 
-3. Challenges Addressed
+## 3. Challenges Addressed
 
-    The tool directly tackles key challenges faced by modern agriculture:
+The tool directly tackles key challenges faced by modern agriculture:
 
 #### Economic Challenges:
 
@@ -67,7 +68,8 @@ The Precision Agriculture Advisory Tool is a web-based application designed to a
 •	Sustainability Risks: Inefficient nutrient use increases environmental strain, reducing the long-term viability of farmland.  
 
 ---
-4. End-to-End Workflow
+
+## 4. End-to-End Workflow
 
 The development process for the Precision Agriculture Advisory Tool was structured around the following workflow:
 
@@ -109,7 +111,7 @@ The development process for the Precision Agriculture Advisory Tool was structur
 
 ---
 
-5. Features:
+## 5. Features:
 
 Soil Analysis: Evaluates five key soil properties:
 •	Soil pH (phh2o)  
@@ -126,7 +128,7 @@ Soil Analysis: Evaluates five key soil properties:
 
 ---
 
-6. Running the Application
+## 6. Running the Application
 
 streamlit run agri.py
 
@@ -135,7 +137,7 @@ After running, open the displayed URL (typically http://localhost:8501) in your 
 
 ---
 
-7. Installation
+## 7. Installation
 
 7.1 Clone the repository
 git clone [https://github.com/peterchiriac/Precision_Agriculture_Advisory_Tool.git](https://github.com/peterchiriac/Precision_Agriculture_Advisory_Tool.git)
@@ -151,18 +153,18 @@ OPENWEATHER_API_KEY=your_openweather_api_key
 
 ---
 
-8. Instructions
+## 8. Instructions
 
 8.1 Enter the latitude and longitude of your field in the input sidebar. Ensure these coordinates correspond to active agricultural areas. For your convenience, here are some suggested locations:
 
 *England*  
 •	Latitude: 52.2053, Longitude: 0.1218 (Cambridge, an agricultural hub)  
 •	Latitude: 51.5074, Longitude: -0.1278 (Near Greater London’s outskirts, where agriculture thrives)  
-•	Latitude: 53.4808, Longitude: -2.2426 (Manchester surroundings, with productive farmland)
+•	Latitude: 53.4808, Longitude: -2.2426 (Manchester surroundings, with productive farmland)  
 *Romania*    
-•	Latitude: 46.5678, Longitude: 27.6659 (Bacău County, known for its farmland)  
+•	Latitude: 46.5678, Longitude: 27.6659 (Bacău County, known for its farmland)   
 *Indiana, US*    
-•	Latitude: 39.7684, Longitude: -86.1581 (Indiana, part of the U.S. Corn Belt)      
+•	Latitude: 39.7684, Longitude: -86.1581 (Indiana, part of the U.S. Corn Belt)  
 
 Note: The locations provided are examples. You can input the latitude and longitude for any agricultural field within the supported regions.
 
@@ -172,14 +174,14 @@ Note: The locations provided are examples. You can input the latitude and longit
 
 ---
 
-9. Deployment
+## 9. Deployment
 
 The app is deployed using Streamlit Sharing and can be accessed here:
 https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
 
 ---
 
-10. Technologies Used
+## 10. Technologies Used
 
 
 | Technology         | Purpose                              |
@@ -193,7 +195,7 @@ https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
 
 ---
 
-11. Limitations And Future Work
+## 11. Limitations And Future Work
 
 •	The tool relies on third-party APIs; data accuracy and availability are dependent on the APIs.  
 •	Location-based data resolution may vary depending on the latitude and longitude provided.  
@@ -211,19 +213,19 @@ Future Enhancements
 
 ---
 
-12. Contributing
+## 12. Contributing
 
 At this time, contributions are not accepted as this is a portfolio project. Future collaboration may be welcomed!
 
 ---
 
-13. License 
+## 13. License 
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
-14. Contact
+## 14. Contact
 
 For any inquiries, suggestions, or feedback, feel free to reach out to me at **peter.chiriac@outlook.com**.
 
