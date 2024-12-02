@@ -11,7 +11,7 @@ Table Of Contents
 1. [Introduction](#1-introduction)
 2. [Overview](#2-overview)
 3. [Challenges Addressed](#3-challenges-addressed)
-4. [End-to-End Workflow](#4end-to-end-workflow)
+4. [End-to-End Workflow](#4-end-to-end-workflow)
 5. [Features](#5-features)
 6. [Installation](#6-installation)
 7. [Running the Application](#7-running-the-application)
@@ -128,7 +128,7 @@ Soil Analysis: Evaluates five key soil properties:
 
 ---
 
-## 6. Running the Application
+## 6. Running the application
 
 streamlit run agri.py
 
