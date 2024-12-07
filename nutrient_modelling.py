@@ -16,19 +16,30 @@ def calculate_nutrient_recommendations(soil_data, weather_summary):
 
     # CEC
     cec = soil_data["cec"].iloc[0]
-    print("CEC:", cec)
+    print("CEC:", cec)  # Debug print
     if cec is not None:
         if cec < 10:
             recommendations.append("Enhance soil with organic matter to improve nutrient retention.")
+        elif 10 <= cec <= 40:
+            recommendations.append("CEC is within the optimal range, no action needed.")
+        else:
+            recommendations.append("High CEC detected; consider reducing fertiliser inputs to prevent nutrient loss.")
     else:
         recommendations.append("CEC data is missing. Unable to provide recommendations.")
 
     # Bulk Density
     bd = soil_data["bdod"].iloc[0]
-    print("Bulk Density:", bd)
+    print("Bulk Density:", bd)  # Debug print
     if bd is not None:
-        if bd > 1.6:  # Example threshold for compacted soil
-            recommendations.append("Reduce soil compaction using deep tillage or cover crops.")
+        if bd < 1.1:
+            recommendations.append("Bulk density is low; consider monitoring soil structure and avoiding over-tillage.")
+        elif 1.1 <= bd <= 1.6:
+            recommendations.append("Bulk density is within the optimal range, indicating good soil structure.")
+        elif bd > 1.6:
+            recommendations.append(
+                "High bulk density detected; reduce soil compaction using deep tillage or cover crops.")
+        else:
+            recommendations.append("Bulk density falls outside expected values; further investigation recommended.")
     else:
         recommendations.append("Bulk density data is missing. Unable to provide recommendations.")
 
