@@ -15,6 +15,7 @@ OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 st.title("Precision Agriculture Advisory Tool")
 st.markdown("""
 This tool provides tailored crop nutrient recommendations based on soil properties and weather.
+
 The five key soil properties analyzed are:
 - **Soil pH (phh2o)**
 - **Cation Exchange Capacity (cec)**
