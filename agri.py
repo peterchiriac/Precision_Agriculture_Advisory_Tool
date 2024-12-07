@@ -107,8 +107,17 @@ if st.sidebar.button("Submit"):
 
                         # Get the mean value
                         mean_value = layer_data["values"]["mean"]
-                        if prop == "phh2o":  # Apply scaling only for pH
+                        # Apply scaling based on property type
+                        if prop == "phh2o":  # Scaling for pH
                             mean_value /= 10
+                        elif prop == "cec":  # Scaling for CEC
+                            mean_value /= 10
+                        elif prop == "bdod":  # Scaling for Bulk Density
+                            mean_value /= 100
+                        elif prop == "clay":  # Scaling for Clay Content
+                            mean_value /= 10
+                        elif prop == "soc":  # Scaling for Soil Organic Carbon
+                            mean_value /= 100
                         values.append(mean_value)
                     except (StopIteration, KeyError):
                         values.append(None)  # Handle missing data gracefully
