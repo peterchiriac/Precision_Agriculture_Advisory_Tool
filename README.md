@@ -2,6 +2,8 @@
   ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
   ![Streamlit](https://img.shields.io/badge/Streamlit-Framework-orange)
   ![License](https://img.shields.io/badge/License-MIT-green)
+
+  **[Access the live application here](https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/)**
   #### A modern tool for optimised crop nutrition and sustainable farming
 
   
@@ -87,12 +89,23 @@ The development process for the Precision Agriculture Advisory Tool was structur
 
 •	Cleaned and preprocessed raw data from APIs and datasets.  
 •	Engineered features by combining soil and weather data for nutrient advice.  
-•	Stored processed data in efficient structures for easy access.  
+•	Stored processed data in efficient structures for easy access. 
+•	Scaling and Adjustments:  
+
+Raw soil data from the SoilGrids API often requires scaling to align with agricultural norms:
+
+•	Soil pH (phh2o): Scaled by a factor of 0.1 to reflect the standard pH scale.  
+•	Cation Exchange Capacity (cec): Divided by 10 to convert to cmol/kg.  
+•	Bulk Density (bdod): Provided in kg/m³ and does not require scaling.  
+•	Clay Content (clay) and Soil Organic Carbon (soc): Used directly without scaling as their units are standard.  
+
+This ensures the data aligns with agricultural conventions, ensuring the tool’s interpretability and reliability.  
+•	Preprocessing: Combined soil and weather data to create a structured dataset for analysis.    
+•	Feature Engineering: Combined and transformed soil and weather features for tailored nutrient advice.    
 
  *4.4 Modelling and Analytics*
 
 •	Developed algorithms for tailored nutrient recommendations.  
-•	Built predictive models to forecast the impact of fertiliser timing on crop yield.  
 •	Validated recommendations using research-based standards.  
 
  *4.5 Visualisation and Delivery*
@@ -207,6 +220,8 @@ https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
 
 Future Enhancements
 
+•	Unified Recommendation Summary:  
+To improve user experience, a future enhancement will focus on aggregating individual recommendations into a single, cohesive action plan. This unified recommendation will synthesise soil and weather insights, categorising actions based on priority (e.g., critical, advisory, or informational). By providing a clear summary, users will gain a comprehensive understanding of the most important steps to optimise crop management, ensuring a more practical and user-friendly tool.  
 •	Add interactive data visualizations using Tableau or Matplotlib.  
 •	Integrate a location API for displaying field names.  
 •	Expand soil and weather parameters for more comprehensive recommendations.  
