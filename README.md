@@ -105,9 +105,9 @@ pip install -r requirements.txt
 ```
 
 ## Run
-
+```bash
 streamlit run agri.py
-
+```
 After running, open the local URL Streamlit prints (typically http://localhost:8501).
 
 ## Configuration
@@ -117,11 +117,11 @@ OPENWEATHER_API_KEY=your_openweather_api_key
 ```
 
 ## Usage
-	1.	Enter latitude and longitude in the sidebar.
-	2.	Click Submit to fetch soil and weather data.
-	3.	Review:
-	•	the processed soil/weather tables
-	•	the recommendation outputs
+1.	Enter latitude and longitude in the sidebar.
+2.	Click Submit to fetch soil and weather data.
+3.	Review:
+-	the processed soil/weather tables
+-	the recommendation outputs
 
 Example locations (for convenience):
 
@@ -142,7 +142,7 @@ Note: These are examples only; use coordinates for your target field.
 
 Deployed on Streamlit Community Cloud:
 
-https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
+`https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/`
 
 ## Technologies
 | Technology | Purpose |
@@ -154,7 +154,7 @@ https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
 | SoilGrids API | Soil properties |
 | OpenWeather API | Weather data |
 
-## Limitations and future work
+### Limitations and future work
 
 Limitations
 - Relies on third-party APIs; accuracy and availability depend on those services.
