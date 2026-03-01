@@ -31,10 +31,7 @@ Farmers and advisors often lack an integrated, quick tool to translate soil and 
 
 > Add screenshots to `assets/` and update the file names below if needed.
 
-**Input sidebar and controls**
 ![App UI](assets/ui.png)
-
-**Example outputs and recommendations**
 ![Outputs](assets/output.png)
 
 ## Problem and motivation
