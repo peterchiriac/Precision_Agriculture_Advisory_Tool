@@ -1,250 +1,176 @@
-  ##                    Precision Agriculture Advisory Tool
-  ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
-  ![Streamlit](https://img.shields.io/badge/Streamlit-Framework-orange)
-  ![License](https://img.shields.io/badge/License-MIT-green)
+# Precision Agriculture Advisory Tool
 
-  **[Access the live application here](https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/)**
-  #### A modern tool for optimised crop nutrition and sustainable farming
+![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-  
----
-Table Of Contents
+A Streamlit web application that combines **soil** and **weather** data to provide **practical crop nutrition guidance**, supporting more efficient fertiliser use and sustainable decision-making.
 
-1. [Introduction](#1-introduction)
-2. [Overview](#2-overview)
-3. [Challenges Addressed](#3-challenges-addressed)
-4. [End-to-End Workflow](#4-end-to-end-workflow)
-5. [Features](#5-features)
-6. [Running the Application](#6-running-the-application)
-7. [Installation](#7-installation)
-8. [Instructions](#8-instructions)
-9. [Deployment](#9-deployment)
-10. [Technologies Used](#10-technologies-used)
-11. [Limitations and Future Work](#11-limitations-and-future-work)
-12. [Contributing](#12-contributing)
-13. [License](#13-license)
-14. [Contact](#14-contact)
+**Live app:** `https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/`
 
----
+## Contents
+1. [Introduction](#introduction)
+2. [Screenshots](#screenshots)
+3. [Problem and motivation](#problem-and-motivation)
+4. [End-to-end workflow](#end-to-end-workflow)
+5. [Features](#features)
+6. [Running locally](#running-locally)
+7. [Configuration](#configuration)
+8. [Usage](#usage)
+9. [Deployment](#deployment)
+10. [Technologies](#technologies)
+11. [Limitations and future work](#limitations-and-future-work)
+12. [License](#license)
+13. [Contact](#contact)
 
-## 1. Introduction
+## Introduction
 
-The Precision Agriculture Advisory Tool is a web-based application designed to assist in making data-driven decisions about crop nutrition and soil health. This tool aims to bridge the gap between modern technology and traditional farming practices, empowering farmers with actionable insights to optimise productivity while reducing environmental impact.
-   
----
-## 2. Overview
+Farmers and advisors often lack an integrated, quick tool to translate soil and weather signals into actionable nutrient decisions. This project bridges that gap by fetching soil properties (SoilGrids) and live weather (OpenWeather), processing them into interpretable values, and presenting practical recommendations in a simple interface.
 
-Farmers face significant challenges in optimising fertiliser application due to the absence of integrated tools that provide real-time, actionable data. This gap often results in inefficient nutrient use, leading to:
+## Screenshots
 
-•	Diminished yields  
-•	Increased costs  
-•	Environmental strain  
-• Poor nutritional quality in harvested crops  
+> Add screenshots to `assets/` and update the file names below if needed.
 
-Crops subjected to excessive or insufficient fertiliser applications frequently fail to develop an optimal nutrient profile, compromising both their quality and nutritional value. The central question this project seeks to address is:
-*How can farmers leverage data to optimise nutrient application effectively?*
+**Input sidebar and controls**
+![App UI](assets/ui.png)
 
-   ---
+**Example outputs and recommendations**
+![Outputs](assets/output.png)
 
-## 3. Challenges Addressed
+## Problem and motivation
 
-The tool directly tackles key challenges faced by modern agriculture:
+I built this tool to address common failures in nutrient management:
 
-#### Economic Challenges:
+- **Economic:** wasted spend from over-application; yield loss from under-application.
+- **Technical:** nutrient requirements vary by crop, soil type, and timing.
+- **Environmental:** leaching and runoff (e.g., eutrophication) from inefficient application.
 
-•	Economic Loss: Overuse of fertilisers leads to unnecessary expenses without proportional benefits.  
-•	Reduced Yields: Insufficient nutrients result in stunted growth, low yields, and unprofitable farming.  
-•	Long-Term Soil Degradation: Mismanagement of nutrients depletes soil health, increasing future costs for rehabilitation and reducing land productivity.  
-•	Financial Risk from Crop Failure: Poor nutrient application or timing can result in crop failures, causing significant income loss and potential debt.  
+The guiding question is:
 
-#### Technical Challenges
+> How can farmers leverage data to optimise nutrient application effectively?
 
-•	Precision Requirements: Nutrient needs vary significantly based on soil type, crop type, and location, requiring tailored application strategies.  
-•	Timing Sensitivity: Proper timing is essential to maximise nutrient absorption and minimise waste, but many farmers lack access to precise timing recommendations.  
-•	Environmental Sensitivity: Nutrients can be washed away by heavy rains or remain unused during drought conditions, further complicating application decisions.  
+## End-to-end workflow
 
-#### Environmental Challenges:
+1. **Problem definition**  
+   Define the user decision: “What should I apply, and when, given my soil and current conditions?”
 
-•	Water Pollution: Nutrient leaching into groundwater contaminates water supplies.  
-•	Eutrophication: Excessive nutrient runoff into water bodies promotes algal blooms, depleting oxygen and causing fish die-offs.  
-•	Sustainability Risks: Inefficient nutrient use increases environmental strain, reducing the long-term viability of farmland.  
+2. **Data collection**  
+   - Soil properties via **SoilGrids API**
+   - Live weather via **OpenWeather API**
+   - User inputs: location (lat/long) and crop/context
 
----
+3. **Data processing**  
+   Clean and standardise API responses, then compute derived fields used for recommendations.
 
-## 4. End-to-End Workflow
+   **SoilGrids scaling notes** (to align with common agronomy conventions):
+   - `phh2o`: scaled by **0.1** to match the pH scale
+   - `cec`: divided by **10** to convert to cmol/kg
+   - `bdod`, `clay`, `soc`: used directly (units already interpretable)
 
-The development process for the Precision Agriculture Advisory Tool was structured around the following workflow:
+4. **Analytics and recommendations**  
+   Generate tailored guidance from soil + weather signals, presented as readable outputs.
 
- *4.1 Problem Definition*
+5. **Delivery**  
+   Streamlit UI for quick input → results → interpretation.
 
-•	Key Question: How can farmers optimise nutrient application using data?  
-•	Stakeholders: Farmers, agricultural advisors, and sustainability advocates.  
+6. **Deployment**  
+   Streamlit Community Cloud deployment for public access.
 
- *4.2 Data Collection*
+## Features
 
-•	Real-Time Data: Integrated APIs for live weather and soil conditions (OpenWeatherMap and SoilGrids).  
-•	User Inputs: Enabled user input for crop type, location, and nutrient preferences.  
+- **Soil analysis** (core properties)
+  - pH (`phh2o`)
+  - Cation exchange capacity (`cec`)
+  - Bulk density (`bdod`)
+  - Clay content (`clay`)
+  - Soil organic carbon (`soc`)
+- **Weather analysis**
+  - Temperature
+  - Rainfall / precipitation context
+- **Recommendations**
+  - Practical guidance based on soil + weather conditions
+  - Notes for deficiencies, risk conditions, and timing considerations
 
-  *4.3 Data Processing*
+## Running locally
 
-•	Cleaned and preprocessed raw data from APIs and datasets.  
-•	Engineered features by combining soil and weather data for nutrient advice.  
-•	Stored processed data in efficient structures for easy access. 
-•	Scaling and Adjustments:  
+### Requirements
+- Python 3.7+
+- An OpenWeather API key
 
-Raw soil data from the SoilGrids API often requires scaling to align with agricultural norms:
+### Install
+```bash
+git clone https://github.com/peterchiriac/Precision_Agriculture_Advisory_Tool.git
+cd Precision_Agriculture_Advisory_Tool
+pip install -r requirements.txt
+```
 
-•	Soil pH (phh2o): Scaled by a factor of 0.1 to reflect the standard pH scale.  
-•	Cation Exchange Capacity (cec): Divided by 10 to convert to cmol/kg.  
-•	Bulk Density (bdod): Provided in kg/m³ and does not require scaling.  
-•	Clay Content (clay) and Soil Organic Carbon (soc): Used directly without scaling as their units are standard.  
-
-This ensures the data aligns with agricultural conventions, ensuring the tool’s interpretability and reliability.  
-•	Preprocessing: Combined soil and weather data to create a structured dataset for analysis.    
-•	Feature Engineering: Combined and transformed soil and weather features for tailored nutrient advice.    
-
- *4.4 Modelling and Analytics*
-
-•	Developed algorithms for tailored nutrient recommendations.  
-•	Validated recommendations using research-based standards.  
-
- *4.5 Visualisation and Delivery*
-
-•	Designed an advisory tool with an intuitive interface for tailored recommendations.  
-
-
-  *4.6 Deployment*
-
-•	Deployed the tool as a web app using Streamlit Sharing.  
-•	Made the tool accessible with clear instructions for usage.  
-
- *4.7 Future enhancements*
-
-•	Outlined future enhancements for data visualisation and feature expansion.  
-
----
-
-## 5. Features:
-
-Soil Analysis: Evaluates five key soil properties:
-•	Soil pH (phh2o)  
-•	Cation Exchange Capacity (cec)  
-•	Bulk Density (bdod)  
-•	Clay Content (clay)  
-•	Soil Organic Carbon (soc)  
-•	Weather Analysis: Incorporates real-time weather data, including:  
-•	Temperature  
-•	Rainfall  
-•	Nutrient Recommendations  
-•	Tailored advice based on soil and weather data.  
-•	Suggestions to address deficiencies or improve soil conditions.  
-
----
-
-## 6. Running the application
+## Run
 
 streamlit run agri.py
 
-After running, open the displayed URL (typically http://localhost:8501) in your browser.
- 
+After running, open the local URL Streamlit prints (typically http://localhost:8501).
 
----
-
-## 7. Installation
-
-7.1 Clone the repository
-git clone [https://github.com/peterchiriac/Precision_Agriculture_Advisory_Tool.git](https://github.com/peterchiriac/Precision_Agriculture_Advisory_Tool.git)
-cd Precision_Agriculture_Advisory_Tool
-Ensure you have Python 3.7 or higher installed on your system
-
-7.2 Install dependencies
-pip install -r requirements.txt
-
-7.3 Add Environment Variables
-Create a .env file in the project directory with your API keys:
+## Configuration
+Create a .env file in the project root:
+```bash
 OPENWEATHER_API_KEY=your_openweather_api_key
+```
 
----
+Usage
+	1.	Enter latitude and longitude in the sidebar.
+	2.	Click Submit to fetch soil and weather data.
+	3.	Review:
+	•	the processed soil/weather tables
+	•	the recommendation outputs
 
-## 8. Instructions
+Example locations (for convenience):
 
-8.1 Enter the latitude and longitude of your field in the input sidebar. Ensure these coordinates correspond to active agricultural areas. For your convenience, here are some suggested locations:
+England
+	•	Cambridge: 52.2053, 0.1218
+	•	London outskirts: 51.5074, -0.1278
+	•	Manchester area: 53.4808, -2.2426
 
-*England*  
-•	Latitude: 52.2053, Longitude: 0.1218 (Cambridge, an agricultural hub)  
-•	Latitude: 51.5074, Longitude: -0.1278 (Near Greater London’s outskirts, where agriculture thrives)  
-•	Latitude: 53.4808, Longitude: -2.2426 (Manchester surroundings, with productive farmland)  
-*Romania*    
-•	Latitude: 46.5678, Longitude: 27.6659 (Bacău County, known for its farmland)   
-*Indiana, US*    
-•	Latitude: 39.7684, Longitude: -86.1581 (Indiana, part of the U.S. Corn Belt)  
+Romania
+	•	Bacău County: 46.5678, 27.6659
 
-Note: The locations provided are examples. You can input the latitude and longitude for any agricultural field within the supported regions.
+Indiana, US
+	•	Indianapolis area: 39.7684, -86.1581
 
-8.2.	Click “Submit” to fetch soil and weather data.  
-8.3.	View the processed data in tables displayed on the interface.  
-8.4.	Review actionable crop nutrient recommendations tailored to your inputs.  
+Note: These are examples only; use coordinates for your target field.
 
----
+Deployment
 
-## 9. Deployment
+Deployed on Streamlit Community Cloud:
 
-The app is deployed using Streamlit Sharing and can be accessed here:
 https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
 
----
+## Technologies
+| Technology | Purpose |
+|---|---|
+| Python | Core language |
+| Streamlit | Web app |
+| Pandas | Data processing |
+| Requests | API calls |
+| SoilGrids API | Soil properties |
+| OpenWeather API | Weather data |
 
-## 10. Technologies Used
+## Limitations and future work
 
+Limitations
+	•	Relies on third-party APIs; accuracy and availability depend on those services.
+	•	Resolution varies by location and dataset coverage.
+	•	No integrated map/location names (lat/long only).
 
-| Technology         | Purpose                              |
-|--------------------|--------------------------------------|
-| Python             | Core programming language           |
-| Streamlit          | Web app framework                   |
-| Pandas             | Data manipulation and analysis      |
-| Requests           | API calls to fetch soil/weather data|
-| SoilGrids API      | Soil property data                  |
-| OpenWeather API    | Weather data                        |
+Future work
+	•	Unified recommendation summary (single action plan with priorities).
+	•	Add visualisations (Matplotlib / Plotly).
+	•	Integrate a location lookup/map view.
+	•	Expand parameters and improve agronomy calibration.
 
----
+## License
 
-## 11. Limitations And Future Work
+MIT — see LICENSE.
 
-•	The tool relies on third-party APIs; data accuracy and availability are dependent on the APIs.  
-•	Location-based data resolution may vary depending on the latitude and longitude provided.  
-•	Currently, the tool does not integrate real-time location names or maps.  
+## Contact
 
-  ##### API Coverage Note:
-
-  Please be aware that the SoilGrids API is limited to areas that are already used for agricultural purposes. You can't input any location (i.e. a street or your backyard) as the API does not cover those areas.
-
-Future Enhancements
-
-•	Unified Recommendation Summary:  
-To improve user experience, a future enhancement will focus on aggregating individual recommendations into a single, cohesive action plan. This unified recommendation will synthesise soil and weather insights, categorising actions based on priority (e.g., critical, advisory, or informational). By providing a clear summary, users will gain a comprehensive understanding of the most important steps to optimise crop management, ensuring a more practical and user-friendly tool.  
-•	Add interactive data visualizations using Tableau or Matplotlib.  
-•	Integrate a location API for displaying field names.  
-•	Expand soil and weather parameters for more comprehensive recommendations.  
-
----
-
-## 12. Contributing
-
-At this time, contributions are not accepted as this is a portfolio project. Future collaboration may be welcomed!
-
----
-
-## 13. License 
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
-
-## 14. Contact
-
-For any inquiries, suggestions, or feedback, feel free to reach out to me at **peter.chiriac@outlook.com**.
-
----
-
-I hope you find this tool valuable for enhancing agricultural practices. Feel free to explore the live app and provide feedback!
-
+For enquiries or feedback: peter.chiriac@outlook.com
