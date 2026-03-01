@@ -116,7 +116,7 @@ Create a .env file in the project root:
 OPENWEATHER_API_KEY=your_openweather_api_key
 ```
 
-Usage
+## Usage
 	1.	Enter latitude and longitude in the sidebar.
 	2.	Click Submit to fetch soil and weather data.
 	3.	Review:
@@ -138,7 +138,7 @@ Indiana, US
 
 Note: These are examples only; use coordinates for your target field.
 
-Deployment
+## Deployment
 
 Deployed on Streamlit Community Cloud:
 
@@ -157,15 +157,15 @@ https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
 ## Limitations and future work
 
 Limitations
-	•	Relies on third-party APIs; accuracy and availability depend on those services.
-	•	Resolution varies by location and dataset coverage.
-	•	No integrated map/location names (lat/long only).
+- Relies on third-party APIs; accuracy and availability depend on those services.
+- Resolution varies by location and dataset coverage.
+- No integrated map/location names (lat/long only).
 
 Future work
-	•	Unified recommendation summary (single action plan with priorities).
-	•	Add visualisations (Matplotlib / Plotly).
-	•	Integrate a location lookup/map view.
-	•	Expand parameters and improve agronomy calibration.
+- Unified recommendation summary (single action plan with priorities).
+- Add visualisations (Matplotlib / Plotly).
+- Integrate a location lookup/map view.
+- Expand parameters and improve agronomy calibration.
 
 ## License
 
