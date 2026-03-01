@@ -1,10 +1,12 @@
 # Precision Agriculture Advisory Tool
 
+**Status:** Early prototype / learning project (built in 2024). Kept public for transparency; my newer work lives in more recent repositories.
+
 ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A Streamlit web application that combines **soil** and **weather** data to provide **practical crop nutrition guidance**, supporting more efficient fertiliser use and sustainable decision-making.
+A Streamlit web app that combines **soil** and **weather** data to produce **practical, readable crop nutrition notes**. It is designed as lightweight decision support rather than a definitive agronomy system.
 
 **Live app:** `https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/`
 
@@ -25,7 +27,7 @@ A Streamlit web application that combines **soil** and **weather** data to provi
 
 ## Introduction
 
-Farmers and advisors often lack an integrated, quick tool to translate soil and weather signals into actionable nutrient decisions. This project bridges that gap by fetching soil properties (SoilGrids) and live weather (OpenWeather), processing them into interpretable values, and presenting practical recommendations in a simple interface.
+Growers and advisors often have soil and weather information in separate places. This project brings a few key signals together by fetching soil properties (SoilGrids) and weather (OpenWeather), processing them into interpretable values, and presenting simple guidance in a Streamlit interface.
 
 ## Screenshots
 
@@ -36,36 +38,36 @@ Farmers and advisors often lack an integrated, quick tool to translate soil and 
 
 ## Problem and motivation
 
-I built this tool to address common failures in nutrient management:
+I built this tool to explore common pain points in nutrient management:
 
-- **Economic:** wasted spend from over-application; yield loss from under-application.
-- **Technical:** nutrient requirements vary by crop, soil type, and timing.
+- **Economic:** overspending from over-application; yield loss from under-application.
+- **Technical:** nutrient needs vary by crop, soil type, and timing.
 - **Environmental:** leaching and runoff (e.g., eutrophication) from inefficient application.
 
-The guiding question is:
+Guiding question:
 
-> How can farmers leverage data to optimise nutrient application effectively?
+> How can basic soil and weather signals be turned into simple, usable nutrient guidance?
 
 ## End-to-end workflow
 
 1. **Problem definition**  
-   Define the user decision: “What should I apply, and when, given my soil and current conditions?”
+   Define the user decision: “What might I apply, and when, given my soil and current conditions?”
 
 2. **Data collection**  
    - Soil properties via **SoilGrids API**
-   - Live weather via **OpenWeather API**
+   - Weather via **OpenWeather API**
    - User inputs: location (lat/long) and crop/context
 
 3. **Data processing**  
-   Clean and standardise API responses, then compute derived fields used for recommendations.
+   Clean and standardise API responses, then compute derived fields used for the outputs.
 
    **SoilGrids scaling notes** (to align with common agronomy conventions):
    - `phh2o`: scaled by **0.1** to match the pH scale
    - `cec`: divided by **10** to convert to cmol/kg
    - `bdod`, `clay`, `soc`: used directly (units already interpretable)
 
-4. **Analytics and recommendations**  
-   Generate tailored guidance from soil + weather signals, presented as readable outputs.
+4. **Outputs**  
+   Present soil + weather context and simple, readable recommendations.
 
 5. **Delivery**  
    Streamlit UI for quick input → results → interpretation.
@@ -75,18 +77,18 @@ The guiding question is:
 
 ## Features
 
-- **Soil analysis** (core properties)
+- **Soil properties** (via SoilGrids)
   - pH (`phh2o`)
   - Cation exchange capacity (`cec`)
   - Bulk density (`bdod`)
   - Clay content (`clay`)
   - Soil organic carbon (`soc`)
-- **Weather analysis**
+- **Weather context** (via OpenWeather)
   - Temperature
   - Rainfall / precipitation context
-- **Recommendations**
-  - Practical guidance based on soil + weather conditions
-  - Notes for deficiencies, risk conditions, and timing considerations
+- **Guidance**
+  - Notes driven by soil + weather conditions
+  - Flags for risk conditions and timing considerations
 
 ## Running locally
 
