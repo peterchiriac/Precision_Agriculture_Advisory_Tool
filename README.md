@@ -8,7 +8,7 @@
 
 A Streamlit web app that combines **soil** and **weather** data to produce **practical, readable crop nutrition notes**. It is designed as lightweight decision support rather than a definitive agronomy system.
 
-**Live app:** `https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/`
+**Live app:** https://precisionagricultureadvisorytool-yfewcvczjjwyv9wb3ftea6.streamlit.app/
 
 ## Contents
 1. [Introduction](#introduction)
